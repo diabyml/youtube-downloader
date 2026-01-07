@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Downloader - Video & MP3 Download</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="header">
+        <div class="header-content">
+          <h1 class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+              />
+            </svg>
+            YouTube Downloader by
+            <a href="https://diabyml.github.io/">Diabyml</a>
+          </h1>
+          <a
+            href="https://github.com/diabyml/youtube-downloader"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="github-link"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="card">
+          <form id="download-form" class="download-form">
+            <div class="form-group">
+              <label for="url" class="form-label">Video URL</label>
+              <input
+                type="url"
+                id="url"
+                name="url"
+                class="form-input"
+                placeholder="Paste YouTube URL here..."
+                required
+              />
+              <span class="input-hint"
+                >Supports youtube.com/watch, youtu.be/, and
+                youtube.com/shorts/</span
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Download Format</label>
+              <div class="format-selector">
+                <label class="format-option">
+                  <input
+                    type="radio"
+                    name="format_type"
+                    value="video"
+                    checked
+                  />
+                  <span class="format-card">
+                    <svg
+                      class="format-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect
+                        x="2"
+                        y="2"
+                        width="20"
+                        height="20"
+                        rx="2.18"
+                        ry="2.18"
+                      />
+                      <line x1="7" y1="2" x2="7" y2="22" />
+                      <line x1="17" y1="2" x2="17" y2="22" />
+                      <line x1="2" y1="12" x2="22" y2="12" />
+                      <line x1="2" y1="7" x2="7" y2="7" />
+                      <line x1="2" y1="17" x2="7" y2="17" />
+                      <line x1="17" y1="17" x2="22" y2="17" />
+                      <line x1="17" y1="7" x2="22" y2="7" />
+                    </svg>
+                    <span class="format-title">Video</span>
+                    <span class="format-desc">MP4 format</span>
+                  </span>
+                </label>
+                <label class="format-option">
+                  <input type="radio" name="format_type" value="audio" />
+                  <span class="format-card">
+                    <svg
+                      class="format-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M9 18V5l12-2v13" />
+                      <circle cx="6" cy="18" r="3" />
+                      <circle cx="18" cy="16" r="3" />
+                    </svg>
+                    <span class="format-title">Audio</span>
+                    <span class="format-desc">MP3 format</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group quality-group">
+              <label for="quality" class="form-label">Quality</label>
+              <select id="quality" name="quality" class="form-select">
+                <option value="best">Best Quality</option>
+                <option value="1080">1080p</option>
+                <option value="720">720p</option>
+                <option value="480">480p</option>
+                <option value="360">360p</option>
+                <option value="worst">Lowest Quality</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submit-btn">
+              <span class="btn-text">Start Download</span>
+              <span class="btn-loader" style="display: none">
+                <svg class="spinner" viewBox="0 0 24 24">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    fill="none"
+                    stroke-dasharray="30 70"
+                  />
+                </svg>
+              </span>
+            </button>
+          </form>
+
+          <div
+            id="progress-container"
+            class="progress-container"
+            style="display: none"
+          >
+            <div class="percentage-display">
+              <span class="percentage-value" id="progress-percent">0</span>
+              <span class="percentage-symbol">%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-header">
+              <span class="progress-status" id="progress-status"
+                >Preparing...</span
+              >
+              <span class="progress-info" id="progress-info"></span>
+            </div>
+          </div>
+
+          <div
+            id="error-container"
+            class="error-container"
+            style="display: none"
+          >
+            <svg class="error-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+              />
+            </svg>
+            <div class="error-content">
+              <h3 class="error-title">Download Failed</h3>
+              <p class="error-message" id="error-message"></p>
+            </div>
+          </div>
+
+          <div
+            id="result-container"
+            class="result-container"
+            style="display: none"
+          >
+            <div class="result-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+            </div>
+            <h3 class="result-title">Download Ready!</h3>
+            <p class="result-filename" id="result-filename"></p>
+            <a href="#" class="btn btn-success" id="download-btn">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download File
+            </a>
+            <p class="cleanup-notice">
+              Files are automatically deleted after download
+            </p>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <h3>Fast Downloads</h3>
+            <p>Quick and reliable downloads powered by yt-dlp</p>
+          </div>
+          <div class="feature">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M9 18V5l12-2v13" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="18" cy="16" r="3" />
+            </svg>
+            <h3>MP3 Extraction</h3>
+            <p>Extract audio as high-quality MP3 files</p>
+          </div>
+          <div class="feature">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <h3>Secure & Private</h3>
+            <p>Files are automatically cleaned up after download</p>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p>Built by <a href="https://diabyml.github.io/">diabyml</a></p>
+      </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
